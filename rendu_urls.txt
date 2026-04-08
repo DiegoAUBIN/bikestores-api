@@ -1,0 +1,8 @@
+URLs de rendu pour SAE 401D - BikeStores API
+
+Webservice (API) : https://dev-aubin241.users.info.unicaen.fr/Bikestores/
+Site web : https://dev-aubin241.users.info.unicaen.fr/Bikestores/site/
+Documentation API : https://dev-aubin241.users.info.unicaen.fr/Bikestores/docs/
+
+Dépôt GitHub API : https://github.com/DiegoAUBIN/bikestores-api
+Dépôt GitHub Site : https://github.com/DiegoAUBIN/bikestores-site
