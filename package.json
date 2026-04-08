@@ -1,0 +1,14 @@
+{
+  "name": "bikestores-frontend",
+  "version": "1.0.0",
+  "description": "BikeStores REST API Client - Frontend JavaScript",
+  "main": "public/site/assets/js/app.js",
+  "scripts": {
+    "jsdoc": "jsdoc -c jsdoc.json"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2"
+  },
+  "author": "SAE 401D Project",
+  "license": "MIT"
+}

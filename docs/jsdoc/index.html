@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeStores API - JavaScript Documentation</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #27ae60; --light: #ecf0f1; --text: #2c3e50; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 40px 0; margin-bottom: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1em; opacity: 0.9; }
+        .section { background: white; padding: 30px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { color: var(--secondary); border-bottom: 3px solid var(--secondary); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.8em; }
+        .file-list { list-style: none; }
+        .file-list li { padding: 12px; background: var(--light); margin-bottom: 10px; border-radius: 4px; border-left: 4px solid var(--secondary); }
+        .file-list li code { background: white; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+        .file-path { color: #7f8c8d; font-size: 0.9em; margin-left: 10px; }
+        .function { background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        .func-name { font-weight: bold; color: var(--secondary); font-family: 'Courier New', monospace; }
+        .description { color: #555; margin-top: 5px; }
+        .param { color: #666; font-size: 0.95em; margin-left: 20px; margin-top: 3px; }
+        .return { color: #166; font-size: 0.95em; margin-left: 20px; margin-top: 3px; }
+        .timestamp { color: #999; font-size: 0.9em; margin-top: 20px; }
+        .note { background: #e8f4f8; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        .badge { display: inline-block; background: var(--secondary); color: white; padding: 3px 8px; border-radius: 3px; font-size: 0.85em; margin: 0 5px 0 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BikeStores REST API</h1>
+            <p class="subtitle">JavaScript Frontend Documentation - Generated automatically</p>
+        </header>
+
+        <div class="section">
+            <h2>📋 Project Overview</h2>
+            <p>This documentation covers the BikeStores REST API frontend JavaScript, developed as part of SAE 401D project for BUT Métiers MMI.</p>
+            <p><strong>Version:</strong> 1.0.0</p>
+            <p><strong>Generated:</strong> <span id="timestamp"></span></p>
+            <div class="note">
+                All JavaScript code follows JSDoc standard with comprehensive documentation blocks for functions and classes.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🗂️ Documented JavaScript Files</h2>
+            <ul class="file-list">
+                <li><code>public/site/assets/js/app.js</code> <span class="file-path">Main application logic, API client, UI controllers</span></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔑 Core Functions & API Client</h2>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">Authentication Functions</h3>
+            <div class="function">
+                <div class="func-name">login(email, password)</div>
+                <div class="description">Authenticate user with email and password</div>
+                <div class="param"><strong>@param {string} email</strong> - User email address</div>
+                <div class="param"><strong>@param {string} password</strong> - User password</div>
+                <div class="return"><strong>@returns {Promise&lt;Object&gt;}</strong> - User data and session info</div>
+            </div>
+            <div class="function">
+                <div class="func-name">logout()</div>
+                <div class="description">Terminate user session and clear local data</div>
+                <div class="return"><strong>@returns {Promise&lt;void&gt;}</strong></div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">API Request Functions</h3>
+            <div class="function">
+                <div class="func-name">apiRequest(method, endpoint, payload, requiresApiKey)</div>
+                <div class="description">Generic API request wrapper with error handling and authentication</div>
+                <div class="param"><strong>@param {string} method</strong> - HTTP method (GET, POST, PUT, DELETE)</div>
+                <div class="param"><strong>@param {string} endpoint</strong> - API endpoint path (e.g., '/api/employees')</div>
+                <div class="param"><strong>@param {Object} [payload]</strong> - Request body for POST/PUT requests</div>
+                <div class="param"><strong>@param {boolean} [requiresApiKey=false]</strong> - Add X-API-KEY header if true</div>
+                <div class="return"><strong>@returns {Promise&lt;Object&gt;}</strong> - Parsed JSON response</div>
+            </div>
+            <div class="function">
+                <div class="func-name">withWriteAuth()</div>
+                <div class="description">Add authentication headers for write operations</div>
+                <div class="return"><strong>@returns {Object}</strong> - Header object with X-API-KEY and auth credentials</div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">Employee Management Functions</h3>
+            <div class="function">
+                <div class="func-name">renderEmployees()</div>
+                <div class="description">Fetch and render employee list based on user role and permissions</div>
+                <div class="description" style="color: #666; margin-top: 5px;">
+                    <strong>Role-based filtering:</strong><br>
+                    - employee: 403 Forbidden<br>
+                    - chief: Filtered by store_id<br>
+                    - it: Full list
+                </div>
+                <div class="return"><strong>@returns {Promise&lt;void&gt;}</strong></div>
+            </div>
+            <div class="function">
+                <div class="func-name">handleCrudSubmit(event)</div>
+                <div class="description">Process form submission for CRUD operations (Create/Read/Update/Delete)</div>
+                <div class="param"><strong>@param {Event} event</strong> - Form submit event</div>
+                <div class="description">Extracts form data, validates operation, sends to API</div>
+                <div class="return"><strong>@returns {Promise&lt;void&gt;}</strong></div>
+            </div>
+            <div class="function">
+                <div class="func-name">buildCrudPayload(details)</div>
+                <div class="description">Construct JSON payload from form input fields for API submission</div>
+                <div class="param"><strong>@param {Object} details</strong> - Form data object</div>
+                <div class="description">Dynamically builds payload based on selected CRUD operation and resource type</div>
+                <div class="return"><strong>@returns {Object}</strong> - API-ready JSON payload</div>
+            </div>
+            <div class="function">
+                <div class="func-name">validateCrudOperation(operation, details)</div>
+                <div class="description">Validate CRUD operation before sending to API</div>
+                <div class="param"><strong>@param {string} operation</strong> - CRUD operation (create, read, update, delete)</div>
+                <div class="param"><strong>@param {Object} details</strong> - Operation data</div>
+                <div class="description">Checks required fields, business rules, and permissions</div>
+                <div class="return"><strong>@returns {Object}</strong> - Validation result with { valid, errors }</div>
+            </div>
+            <div class="function">
+                <div class="func-name">syncCrudFieldsVisibility()</div>
+                <div class="description">Dynamically show/hide form fields based on selected resource type and operation</div>
+                <div class="description">Responds to changes in CRUD resource selector and operation selector</div>
+                <div class="return"><strong>@returns {void}</strong></div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">Product Management Functions</h3>
+            <div class="function">
+                <div class="func-name">renderProducts(filters)</div>
+                <div class="description">Fetch and display products with optional filtering</div>
+                <div class="param"><strong>@param {Object} [filters]</strong> - Filter object</div>
+                <div class="description">
+                    Supported filters:<br>
+                    - brand_id: Filter by brand<br>
+                    - category_id: Filter by category<br>
+                    - model_year: Filter by year<br>
+                    - price_min/price_max: Filter by price range
+                </div>
+                <div class="return"><strong>@returns {Promise&lt;void&gt;}</strong></div>
+            </div>
+            <div class="function">
+                <div class="func-name">applyProductFilters()</div>
+                <div class="description">Gather filter values from UI controls and apply filters to product list</div>
+                <div class="return"><strong>@returns {Promise&lt;void&gt;}</strong></div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">UI Control Functions</h3>
+            <div class="function">
+                <div class="func-name">syncUiWithRole()</div>
+                <div class="description">Update UI visibility and controls based on authenticated user role</div>
+                <div class="description">
+                    Hide/show tabs and controls:<br>
+                    - employee: Team, Operations tabs hidden; add-employee form hidden<br>
+                    - chief: Store selector disabled<br>
+                    - it: All controls visible
+                </div>
+                <div class="return"><strong>@returns {void}</strong></div>
+            </div>
+            <div class="function">
+                <div class="func-name">switchTab(tabName)</div>
+                <div class="description">Switch active tab in the application interface</div>
+                <div class="param"><strong>@param {string} tabName</strong> - Tab name (showroom, team, operations, account)</div>
+                <div class="return"><strong>@returns {void}</strong></div>
+            </div>
+            <div class="function">
+                <div class="func-name">updateProfile()</div>
+                <div class="description">Update current user profile information (name, email, password)</div>
+                <div class="description">Reads from profile update form, sends PUT request to /auth/profile</div>
+                <div class="return"><strong>@returns {Promise&lt;void&gt;}</strong></div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">Utility Functions</h3>
+            <div class="function">
+                <div class="func-name">formatPrice(price)</div>
+                <div class="description">Format numeric price as EUR currency string</div>
+                <div class="param"><strong>@param {number} price</strong> - Price value in cents or euros</div>
+                <div class="return"><strong>@returns {string}</strong> - Formatted price (e.g., "€99.99")</div>
+            </div>
+            <div class="function">
+                <div class="func-name">showNotification(message, type)</div>
+                <div class="description">Display UI notification message to user</div>
+                <div class="param"><strong>@param {string} message</strong> - Message text</div>
+                <div class="param"><strong>@param {string} [type='info']</strong> - Notification type (success, error, warning, info)</div>
+                <div class="return"><strong>@returns {void}</strong></div>
+            </div>
+            <div class="function">
+                <div class="func-name">handleError(error)</div>
+                <div class="description">Centralized API error handler with user-friendly messages</div>
+                <div class="param"><strong>@param {Error|Object} error</strong> - Error object or API error response</div>
+                <div class="return"><strong>@returns {string}</strong> - User-friendly error message</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📋 Global State Management</h2>
+            <p><strong>session object:</strong> Stores authenticated user and session data</p>
+            <div style="background: #f9f9f9; padding: 15px; margin-top: 10px; border-radius: 4px; border-left: 3px solid var(--secondary);">
+                <code>session.user_id</code> - Current user ID<br>
+                <code>session.email</code> - User email<br>
+                <code>session.role</code> - User role (employee, chief, it)<br>
+                <code>session.store_id</code> - User's store ID (non-IT users)<br>
+                <code>session.api_key</code> - API key for write operations
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔐 Security & Authentication</h2>
+            <p><strong>Session-based Auth:</strong> Stored in browser sessionStorage or localStorage</p>
+            <p><strong>API Key:</strong> Required for POST/PUT/DELETE operations, sent via <code>X-API-KEY</code> header</p>
+            <p><strong>CSRF Protection:</strong> Session-based authentication mitigates CSRF attacks</p>
+            <p><strong>Input Validation:</strong> Client-side validation in validateCrudOperation(), server-side validation on API</p>
+        </div>
+
+        <div class="section">
+            <h2>📦 Event Flow</h2>
+            <ol style="margin-left: 20px;">
+                <li>User logs in with email/password</li>
+                <li>Session token stored locally, UI updated based on role</li>
+                <li>User selects CRUD resource and operation</li>
+                <li>Form fields appear/hide dynamically via syncCrudFieldsVisibility()</li>
+                <li>User fills form and clicks submit</li>
+                <li>handleCrudSubmit() validates operation and builds payload</li>
+                <li>apiRequest() sends authenticated request with X-API-KEY header</li>
+                <li>Response processed and UI updated accordingly</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>✅ Documentation Standards</h2>
+            <p>This JavaScript code follows:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>JSDoc Standard:</strong> All functions have complete documentation blocks with @param, @returns, @throws annotations</li>
+                <li><strong>Type Annotations:</strong> Parameter and return types specified in JSDoc comments</li>
+                <li><strong>Error Handling:</strong> Try-catch blocks and promise error handlers throughout</li>
+                <li><strong>ES6 Modern Syntax:</strong> Async/await, arrow functions, const/let declarations</li>
+            </ul>
+        </div>
+
+        <p class="timestamp" id="footer">Generated on <span id="datetime"></span></p>
+    </div>
+
+    <script>
+        const now = new Date();
+        document.getElementById('timestamp').textContent = now.toLocaleString('fr-FR');
+        document.getElementById('datetime').textContent = now.toLocaleString('fr-FR');
+    </script>
+</body>
+</html>

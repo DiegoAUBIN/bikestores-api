@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeStores API - PHP Documentation</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --light: #ecf0f1; --text: #2c3e50; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 40px 0; margin-bottom: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1em; opacity: 0.9; }
+        .section { background: white; padding: 30px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { color: var(--secondary); border-bottom: 3px solid var(--secondary); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.8em; }
+        .file-list { list-style: none; }
+        .file-list li { padding: 12px; background: var(--light); margin-bottom: 10px; border-radius: 4px; border-left: 4px solid var(--secondary); }
+        .file-list li code { background: white; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+        .file-path { color: #7f8c8d; font-size: 0.9em; margin-left: 10px; }
+        .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        .timestamp { color: #999; font-size: 0.9em; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BikeStores REST API</h1>
+            <p class="subtitle">PHP Documentation - Generated automatically</p>
+        </header>
+
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>This documentation covers the BikeStores REST API backend, developed as part of SAE 401D project for BUT Metiers MMI.</p>
+            <p><strong>Version:</strong> 1.0.0</p>
+            <p><strong>Generated:</strong> <span id="timestamp"></span></p>
+            <div class="note">
+                All PHP code follows PHPDoc standard with comprehensive documentation blocks for classes, methods, and functions.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Documented PHP Files</h2>
+            <ul class="file-list">
+                <li><code>src/Controller/AuthController.php</code> <span class="file-path">Authentication and user profile management</span></li>
+                <li><code>src/Controller/EmployeeController.php</code> <span class="file-path">Employee CRUD with role-based access control</span></li>
+                <li><code>src/Controller/BrandController.php</code> <span class="file-path">Brand management</span></li>
+                <li><code>src/Controller/CategoryController.php</code> <span class="file-path">Category management</span></li>
+                <li><code>src/Controller/StoreController.php</code> <span class="file-path">Store management</span></li>
+                <li><code>src/Controller/ProductController.php</code> <span class="file-path">Product management</span></li>
+                <li><code>src/Controller/StockController.php</code> <span class="file-path">Stock management</span></li>
+            </ul>
+        </div>
+
+        <p class="timestamp" id="footer">Generated on <span id="datetime"></span></p>
+    </div>
+
+    <script>
+        const now = new Date();
+        document.getElementById('timestamp').textContent = now.toLocaleString('fr-FR');
+        document.getElementById('datetime').textContent = now.toLocaleString('fr-FR');
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Configuration files with sensitive data
+config/database.php
+
+# Vendor dependencies
+vendor/
+
+# Cache and logs
+var/cache/
+var/log/
+
+# Temporary files
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

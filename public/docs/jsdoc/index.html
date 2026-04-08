@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeStores API - JavaScript Documentation</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #27ae60; --light: #ecf0f1; --text: #2c3e50; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 40px 0; margin-bottom: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1em; opacity: 0.9; }
+        .section { background: white; padding: 30px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { color: var(--secondary); border-bottom: 3px solid var(--secondary); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.8em; }
+        .file-list { list-style: none; }
+        .file-list li { padding: 12px; background: var(--light); margin-bottom: 10px; border-radius: 4px; border-left: 4px solid var(--secondary); }
+        .file-list li code { background: white; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+        .file-path { color: #7f8c8d; font-size: 0.9em; margin-left: 10px; }
+        .function { background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        .func-name { font-weight: bold; color: var(--secondary); font-family: 'Courier New', monospace; }
+        .description { color: #555; margin-top: 5px; }
+        .param { color: #666; font-size: 0.95em; margin-left: 20px; margin-top: 3px; }
+        .return { color: #166; font-size: 0.95em; margin-left: 20px; margin-top: 3px; }
+        .timestamp { color: #999; font-size: 0.9em; margin-top: 20px; }
+        .note { background: #e8f4f8; border-left: 4px solid #27ae60; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        .badge { display: inline-block; background: var(--secondary); color: white; padding: 3px 8px; border-radius: 3px; font-size: 0.85em; margin: 0 5px 0 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BikeStores REST API</h1>
+            <p class="subtitle">JavaScript Frontend Documentation - Generated automatically</p>
+        </header>
+
+        <div class="section">
+            <h2>Project Overview</h2>
+            <p>This documentation covers the BikeStores REST API frontend JavaScript, developed as part of SAE 401D project for BUT Metiers MMI.</p>
+            <p><strong>Version:</strong> 1.0.0</p>
+            <p><strong>Generated:</strong> <span id="timestamp"></span></p>
+            <div class="note">
+                All JavaScript code follows JSDoc standard with comprehensive documentation blocks for functions and classes.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Documented JavaScript Files</h2>
+            <ul class="file-list">
+                <li><code>public/site/assets/js/app.js</code> <span class="file-path">Main application logic, API client, UI controllers</span></li>
+            </ul>
+        </div>
+
+        <p class="timestamp" id="footer">Generated on <span id="datetime"></span></p>
+    </div>
+
+    <script>
+        const now = new Date();
+        document.getElementById('timestamp').textContent = now.toLocaleString('fr-FR');
+        document.getElementById('datetime').textContent = now.toLocaleString('fr-FR');
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "source": {
+    "include": ["public/site/assets/js"],
+    "excludePattern": "(^|\\/|\\\\)node_modules(\\$|\\/|\\\\)"
+  },
+  "opts": {
+    "destination": "./docs/jsdoc",
+    "template": "node_modules/better-docs",
+    "tutorials": "./docs/tutorials",
+    "readme": "./public/site/README.md"
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "plugins": ["plugins/markdown"]
+}

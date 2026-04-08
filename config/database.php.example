@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'driver' => 'pdo_mysql',
+    'host' => '',
+    'port' => 3306,
+    'dbname' => '',
+    'user' => '',
+    'password' => '',
+    'charset' => 'utf8mb4',
+];

@@ -1,0 +1,25 @@
+{
+    "name": "aubin/bikestores-api",
+    "description": "BikeStores REST API for SAE 401D.",
+    "type": "project",
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "doctrine/dbal": "^3.10",
+        "doctrine/orm": "^2.20",
+        "symfony/cache": "^6.4 || ^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "serve-docs": "php -S localhost:8000 -t public",
+        "phpdoc": "phpdoc --config=phpdoc.xml"
+    },
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "^3.7"
+    }
+}

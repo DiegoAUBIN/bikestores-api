@@ -1,0 +1,8 @@
+Loading composer repositories with package information
+Updating dependencies
+Your requirements could not be resolved to an installable set of packages.
+
+  Problem 1
+    - Root composer.json requires phpdocumentor/phpdocumentor ^3.7 -> satisfiable by phpdocumentor/phpdocumentor[v3.7.0, ..., v3.9.1].
+    - phpdocumentor/phpdocumentor[v3.7.0, ..., v3.9.1] require symfony/cache ^6.0 -> found symfony/cache[v6.0.0, ..., v6.4.35] but it conflicts with your root composer.json require (^7.2).
+

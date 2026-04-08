@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeStores API - PHP Documentation</title>
+    <style>
+        :root { --primary: #2c3e50; --secondary: #3498db; --light: #ecf0f1; --text: #2c3e50; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white; padding: 40px 0; margin-bottom: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { font-size: 1.1em; opacity: 0.9; }
+        .section { background: white; padding: 30px; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { color: var(--secondary); border-bottom: 3px solid var(--secondary); padding-bottom: 10px; margin-bottom: 20px; font-size: 1.8em; }
+        .class-list, .file-list { list-style: none; }
+        .class-list li, .file-list li { padding: 12px; background: var(--light); margin-bottom: 10px; border-radius: 4px; border-left: 4px solid var(--secondary); }
+        .class-list li code, .file-list li code { background: white; padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+        .file-path { color: #7f8c8d; font-size: 0.9em; margin-left: 10px; }
+        .method { background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 4px; border-left: 3px solid var(--secondary); }
+        .method-name { font-weight: bold; color: var(--secondary); font-family: 'Courier New', monospace; }
+        .description { color: #555; margin-top: 5px; }
+        .param { color: #666; font-size: 0.95em; margin-left: 20px; }
+        .return { color: #166; font-size: 0.95em; margin-left: 20px; }
+        .timestamp { color: #999; font-size: 0.9em; margin-top: 20px; }
+        .note { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 4px; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>BikeStores REST API</h1>
+            <p class="subtitle">PHP Documentation - Generated automatically</p>
+        </header>
+
+        <div class="section">
+            <h2>📋 Project Overview</h2>
+            <p>This documentation covers the BikeStores REST API backend, developed as part of SAE 401D project for BUT Métiers MMI.</p>
+            <p><strong>Version:</strong> 1.0.0</p>
+            <p><strong>Generated:</strong> <span id="timestamp"></span></p>
+            <div class="note">
+                All PHP code follows PHPDoc standard with comprehensive documentation blocks for classes, methods, and functions.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🗂️ Documented PHP Files</h2>
+            <ul class="file-list">
+                <li><code>src/Controller/AuthController.php</code> <span class="file-path">Authentication & User Profile Management</span></li>
+                <li><code>src/Controller/EmployeeController.php</code> <span class="file-path">Employee CRUD with Role-based Access Control</span></li>
+                <li><code>src/Controller/BrandController.php</code> <span class="file-path">Brand Management (Marques)</span></li>
+                <li><code>src/Controller/CategoryController.php</code> <span class="file-path">Category Management (Catégories)</span></li>
+                <li><code>src/Controller/StoreController.php</code> <span class="file-path">Store Management (Magasins)</span></li>
+                <li><code>src/Controller/ProductController.php</code> <span class="file-path">Product Management (Produits)</span></li>
+                <li><code>src/Controller/StockController.php</code> <span class="file-path">Stock Management (Stocks) with Store-level Restrictions</span></li>
+                <li><code>config/Database.php</code> <span class="file-path">Database Connection & Configuration</span></li>
+                <li><code>routes/api.php</code> <span class="file-path">API Route Definitions & Middleware Configuration</span></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔑 Core Controllers</h2>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">AuthController - Authentication & Authorization</h3>
+            <div class="method">
+                <div class="method-name">login()</div>
+                <div class="description">Authenticate user with email and password, store session</div>
+                <div class="param"><strong>POST /auth/login</strong></div>
+                <div class="return">Session token stored in user session</div>
+            </div>
+            <div class="method">
+                <div class="method-name">getMe()</div>
+                <div class="description">Get current authenticated user profile information</div>
+                <div class="param"><strong>GET /auth/me</strong> - Requires: sessionAuthMiddleware</div>
+                <div class="return">Current user object with role and store information</div>
+            </div>
+            <div class="method">
+                <div class="method-name">updateProfile()</div>
+                <div class="description">Update user profile (name, email, password)</div>
+                <div class="param"><strong>PUT /auth/profile</strong> - Requires: sessionAuthMiddleware</div>
+                <div class="return">Updated user object</div>
+            </div>
+            <div class="method">
+                <div class="method-name">logout()</div>
+                <div class="description">Logout user and destroy session</div>
+                <div class="param"><strong>POST /auth/logout</strong> - Requires: sessionAuthMiddleware</div>
+                <div class="return">Success message</div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">EmployeeController - Staff Management</h3>
+            <div class="method">
+                <div class="method-name">index()</div>
+                <div class="description">List employees with role-based filtering</div>
+                <div class="param"><strong>GET /employees</strong></div>
+                <div class="param">Employee role: Blocked (403)</div>
+                <div class="param">Chief role: Filtered by own store</div>
+                <div class="param">IT role: Full access to all employees</div>
+                <div class="return">Array of employee objects</div>
+            </div>
+            <div class="method">
+                <div class="method-name">store()</div>
+                <div class="description">Create new employee with role and store assignment</div>
+                <div class="param"><strong>POST /employees</strong> - Requires: sessionAuthMiddleware + X-API-KEY header</div>
+                <div class="param">Chief: Can add employees to own store</div>
+                <div class="param">IT: Can add employees/chiefs to any store</div>
+                <div class="return">Created employee object with id</div>
+            </div>
+            <div class="method">
+                <div class="method-name">update()</div>
+                <div class="description">Update employee information (IT role only)</div>
+                <div class="param"><strong>PUT /employees/{id}</strong> - Requires: sessionAuthMiddleware + X-API-KEY + IT Role</div>
+                <div class="return">Updated employee object</div>
+            </div>
+            <div class="method">
+                <div class="method-name">destroy()</div>
+                <div class="description">Delete employee (IT role only)</div>
+                <div class="param"><strong>DELETE /employees/{id}</strong> - Requires: sessionAuthMiddleware + X-API-KEY + IT Role</div>
+                <div class="return">Success message</div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">ProductController - Product Management</h3>
+            <div class="method">
+                <div class="method-name">index()</div>
+                <div class="description">List products with optional filtering (brand, category, year, price)</div>
+                <div class="param"><strong>GET /products</strong></div>
+                <div class="param">?brand_id=X&category_id=Y&model_year=Z&price_min=A&price_max=B</div>
+                <div class="return">Array of product objects with stock information</div>
+            </div>
+            <div class="method">
+                <div class="method-name">store()</div>
+                <div class="description">Create new product</div>
+                <div class="param"><strong>POST /products</strong> - Requires: sessionAuthMiddleware + X-API-KEY</div>
+                <div class="return">Created product object</div>
+            </div>
+            <div class="method">
+                <div class="method-name">update()</div>
+                <div class="description">Update product information</div>
+                <div class="param"><strong>PUT /products/{id}</strong> - Requires: sessionAuthMiddleware + X-API-KEY</div>
+                <div class="return">Updated product object</div>
+            </div>
+            <div class="method">
+                <div class="method-name">destroy()</div>
+                <div class="description">Delete product</div>
+                <div class="param"><strong>DELETE /products/{id}</strong> - Requires: sessionAuthMiddleware + X-API-KEY</div>
+                <div class="return">Success message</div>
+            </div>
+
+            <h3 style="margin-top: 20px; color: var(--secondary);">StockController - Inventory Management</h3>
+            <div class="method">
+                <div class="method-name">index()</div>
+                <div class="description">List stock items for a store with stock levels</div>
+                <div class="param"><strong>GET /stores/{storeId}/products/{productId}/stocks</strong></div>
+                <div class="param">Non-IT: Limited to own store</div>
+                <div class="return">Array of stock records</div>
+            </div>
+            <div class="method">
+                <div class="method-name">store()</div>
+                <div class="description">Add stock for product in store</div>
+                <div class="param"><strong>POST /stores/{storeId}/products/{productId}/stocks</strong> - Requires: sessionAuthMiddleware + X-API-KEY</div>
+                <div class="param">Non-IT: Restricted to own store</div>
+                <div class="return">Created stock record</div>
+            </div>
+            <div class="method">
+                <div class="method-name">update()</div>
+                <div class="description">Update stock quantity for product in store</div>
+                <div class="param"><strong>PUT /stores/{storeId}/products/{productId}/stocks/{stockId}</strong> - Requires: sessionAuthMiddleware + X-API-KEY</div>
+                <div class="return">Updated stock record</div>
+            </div>
+            <div class="method">
+                <div class="method-name">destroy()</div>
+                <div class="description">Remove stock record</div>
+                <div class="param"><strong>DELETE /stores/{storeId}/products/{productId}/stocks/{stockId}</strong> - Requires: sessionAuthMiddleware + X-API-KEY</div>
+                <div class="return">Success message</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔐 Authentication & Middleware</h2>
+            <p><strong>Session Authentication:</strong> Required for authenticated endpoints. Session ID stored in PHP $_SESSION after login.</p>
+            <p><strong>API Key Authentication:</strong> Required for write operations (POST, PUT, DELETE). Header: <code>X-API-KEY</code></p>
+            <p><strong>Role-Based Access Control (RBAC):</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>employee:</strong> View own profile and showroom data only</li>
+                <li><strong>chief:</strong> Manage store and staff, upload products (limited to own store)</li>
+                <li><strong>it:</strong> Full administrative access to all data</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>✅ Other Resources</h2>
+            <p><strong>Brands Controller:</strong> GET /brands, POST /brands, PUT /brands/{id}, DELETE /brands/{id}</p>
+            <p><strong>Categories Controller:</strong> GET /categories, POST /categories, PUT /categories/{id}, DELETE /categories/{id}</p>
+            <p><strong>Stores Controller:</strong> GET /stores, POST /stores, PUT /stores/{id}, DELETE /stores/{id}</p>
+            <p><strong>All endpoints follow RESTful conventions and return JSON responses with proper HTTP status codes.</strong></p>
+        </div>
+
+        <div class="section">
+            <h2>📚 Documentation Standards</h2>
+            <p>This project follows:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li><strong>PHPDoc Standard:</strong> All PHP classes and methods have complete documentation blocks with @param, @return, @throws annotations</li>
+                <li><strong>README:</strong> Project structure and setup instructions in project root</li>
+                <li><strong>OpenAPI 3.0.3 Spec:</strong> Machine-readable API schema at <code>public/docs/openapi.yaml</code></li>
+                <li><strong>Swagger UI:</strong> Interactive API documentation available at <code>/swagger</code> endpoint</li>
+            </ul>
+        </div>
+
+        <p class="timestamp" id="footer">Generated on <span id="datetime"></span></p>
+    </div>
+
+    <script>
+        const now = new Date();
+        document.getElementById('timestamp').textContent = now.toLocaleString('fr-FR');
+        document.getElementById('datetime').textContent = now.toLocaleString('fr-FR');
+    </script>
+</body>
+</html>

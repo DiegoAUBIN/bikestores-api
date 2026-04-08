@@ -1,0 +1,28 @@
+AuthType None
+Require all granted
+
+DirectoryIndex public/index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /Bikestores/
+
+    RewriteRule ^public/ - [L]
+
+    RewriteRule ^docs$ docs/ [R=302,L]
+    RewriteRule ^docs/$ public/docs/ [L]
+    RewriteRule ^docs/(.*)$ public/docs/$1 [L]
+
+    RewriteRule ^(bootstrap|config|routes|sql|src|tests|var|vendor)(/|$) - [F,L,NC]
+
+    RewriteRule ^site/$ public/site/index.html [L]
+    RewriteRule ^site/(.*)$ public/site/$1 [L]
+    RewriteRule ^swagger/?$ public/docs/index.html [L]
+    RewriteRule ^openapi\.yaml$ public/docs/openapi.yaml [L]
+
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    RewriteRule ^ public/index.php [QSA,L]
+</IfModule>

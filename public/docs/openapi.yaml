@@ -1,0 +1,373 @@
+openapi: 3.0.3
+info:
+  title: BikeStores API
+  version: 1.0.0
+  description: REST API used to manage the inventory of three bike stores.
+servers:
+  - url: http://diego
+  - url: https://dev-login.users.info.unicaen.fr/bikestores
+paths:
+  /auth/login:
+    post:
+      summary: Authenticate an employee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Authentication succeeded.
+        '401':
+          description: Invalid credentials.
+  /auth/me:
+    get:
+      summary: Return authenticated employee session
+      security:
+        - SessionAuth: []
+      responses:
+        '200':
+          description: Authenticated employee session returned.
+        '401':
+          description: Authentication required.
+  /auth/profile:
+    put:
+      summary: Update authenticated employee profile
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                employee_name:
+                  type: string
+                employee_email:
+                  type: string
+                employee_password:
+                  type: string
+      responses:
+        '200':
+          description: Profile updated successfully.
+        '400':
+          description: JSON payload required.
+        '401':
+          description: Authentication required.
+  /auth/logout:
+    post:
+      summary: End authenticated session
+      security:
+        - SessionAuth: []
+      responses:
+        '200':
+          description: Logged out successfully.
+        '401':
+          description: Authentication required.
+  /brands:
+    get:
+      summary: List brands
+      responses:
+        '200':
+          description: Brand list returned successfully.
+    post:
+      summary: Create a brand
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      responses:
+        '201':
+          description: Brand created successfully.
+  /brands/{id}:
+    get:
+      summary: Get one brand
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Brand returned successfully.
+    put:
+      summary: Update one brand
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Brand updated successfully.
+    delete:
+      summary: Delete one brand
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Brand deleted successfully.
+  /categories:
+    get:
+      summary: List categories
+      responses:
+        '200':
+          description: Category list returned successfully.
+    post:
+      summary: Create a category
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      responses:
+        '201':
+          description: Category created successfully.
+  /categories/{id}:
+    get:
+      summary: Get one category
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Category returned successfully.
+    put:
+      summary: Update one category
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Category updated successfully.
+    delete:
+      summary: Delete one category
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Category deleted successfully.
+  /stores:
+    get:
+      summary: List stores
+      responses:
+        '200':
+          description: Store list returned successfully.
+    post:
+      summary: Create a store
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      responses:
+        '201':
+          description: Store created successfully.
+  /stores/{id}:
+    get:
+      summary: Get one store
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Store returned successfully.
+    put:
+      summary: Update one store
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Store updated successfully.
+    delete:
+      summary: Delete one store
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Store deleted successfully.
+  /products:
+    get:
+      summary: List products
+      responses:
+        '200':
+          description: Product list returned successfully.
+    post:
+      summary: Create a product
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      responses:
+        '201':
+          description: Product created successfully.
+  /products/{id}:
+    get:
+      summary: Get one product
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Product returned successfully.
+    put:
+      summary: Update one product
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Product updated successfully.
+    delete:
+      summary: Delete one product
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Product deleted successfully.
+  /stocks:
+    get:
+      summary: List stock entries
+      responses:
+        '200':
+          description: Stock list returned successfully.
+    post:
+      summary: Create a stock entry
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      responses:
+        '201':
+          description: Stock entry created successfully.
+  /stocks/{storeId}/{productId}:
+    get:
+      summary: Get one stock entry
+      parameters:
+        - name: storeId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Stock entry returned successfully.
+    put:
+      summary: Update one stock entry
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - name: storeId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Stock entry updated successfully.
+    delete:
+      summary: Delete one stock entry
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - name: storeId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Stock entry deleted successfully.
+  /employees:
+    get:
+      summary: List employees
+      responses:
+        '200':
+          description: Employee list returned successfully.
+    post:
+      summary: Create an employee
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      responses:
+        '201':
+          description: Employee created successfully.
+  /employees/{id}:
+    get:
+      summary: Get one employee
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Employee returned successfully.
+    put:
+      summary: Update one employee
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Employee updated successfully.
+    delete:
+      summary: Delete one employee
+      security:
+        - SessionAuth: []
+          ApiKeyAuth: []
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Employee deleted successfully.
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: PHPSESSID
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer

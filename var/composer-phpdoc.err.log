@@ -1,0 +1,2 @@
+The "3.7" constraint for "phpdocumentor/phpdocumentor" appears too strict and will likely not match what you want. See https://getcomposer.org/constraints
+./composer.json has been updated
